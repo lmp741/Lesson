@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Портфолио</title>
+    <style>
+        /* Стиль для всего сайта */
+        body {
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        /* Стиль для header */
+        header {
+            background-color: black; /* Черный фон */
+            color: white; /* Белый текст */
+            display: flex; /* Размещение элементов в ряд */
+            justify-content: space-between; /* Размещение элементов по краям */
+            position: relative; /* Для добавления нижней границы */
+        }
+
+        /* Стиль для логотипа */
+        .logo {
+           width: 220px;
+           height: 110px; /* Добавить свой стиль для логотипа */
+        }
+        nav{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-right:50px ;
+        }
+        /* Стиль для меню */
+        nav ul {
+            list-style: none; /* Убрать маркеры */
+            margin: 0; /* Убрать отступы */
+            padding: 0; /* Убрать отступы */
+            display: flex; /* Размещение элементов в ряд */
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav li {
+            margin-left: 20px; /* Отступ между пунктами меню */
+            
+        }
+
+        nav a {
+            text-decoration: none; /* Убрать подчеркивание */
+            color: white; /* Белый цвет текста */
+        }
+
+        /* Стиль для нижней границы header */
+        header::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background-color: green; /* Зеленый цвет границы */
+        }
+
+        /* Стиль для блока с изображением */
+        .hero {
+            background-color: black; /* Черный фон */
+            padding: 50px 0; /* Вертикальные отступы */
+            text-align: center; /* Выравнивание текста по центру */
+            position: relative; /* Для позиционирования заголовка и текста */
+        }
+
+        /* Стиль для изображения */
+        .hero img {
+            width: 70%; /* Ширина изображения */
+            max-width: 800px; /* Максимальная ширина */
+            display: block; /* Занимает всю доступную ширину */
+            margin: 0 auto; /* Автоматические отступы по бокам */
+            border-radius: 10px; /* Закругленные углы */
+        }
+
+        /* Стиль для заголовка и текста */
+        .hero h1, .hero p {
+            color: white; /* Белый текст */
+            position: absolute; /* Позиционирование */
+            top: 50%; /* Вертикальное центрирование */
+            left: 50%; /* Горизонтальное центрирование */
+            transform: translate(-50%, -50%); /* Сдвиг по центру */
+            z-index: 1; /* Сверху изображения */
+        }
+
+        /* Стиль для текста */
+        .hero p {
+            font-size: 18px; /* Размер шрифта */
+            line-height: 1.5; /* Межстрочный интервал */
+        }
+        /* Стиль для блока */
+    .section {
+        background-color: black; /* Черный фон */
+        padding: 50px 0; /* Вертикальные отступы */
+        text-align: center; /* Центрирование текста */
+    }
+
+    /* Стиль для контейнера изображения */
+    .image-container {
+        position: relative; /* Позволяет позиционировать изображение */
+    }
+
+    /* Стиль для изображения */
+    .image-container img {
+    width: 90%; /* Ширина изображения */
+    max-width: 900px; /* Максимальная ширина */
+    display: block; /* Занимает всю доступную ширину */
+    margin: 0 auto; /* Автоматические отступы по бокам */
+    border-radius: 10px; /* Закругленные углы */
+    opacity: 0.8; /* Непрозрачность 80% */
+}
+
+
+    /* Стиль для заголовка и текста */
+    .content_main {
+        position: absolute; /* Позиционирование */
+        top: 50%; /* Вертикальное центрирование */
+        left: 50%; /* Горизонтальное центрирование */
+        transform: translate(-50%, -50%); /* Сдвиг по центру */
+        color: white; /* Белый текст */
+        text-align: center; /* Центрирование текста */
+        z-index: 1; /* Сверху изображения */
+    }
+
+    /* Стиль для текста */
+    .content_main p {
+        font-size: 18px; /* Размер шрифта */
+        line-height: 1.5; /* Межстрочный интервал */
+        color: white;
+    }
+        /* Стиль для блока "Обо мне" */
+        .about-me {
+        background-color: black; /* Черный фон */
+        padding: 50px; /* Отступы по всем сторонам */
+        color: white; /* Белый цвет текста */
+    }
+
+    /* Стиль для контейнера */
+    .container {
+        max-width: 1200px; /* Максимальная ширина контейнера */
+        margin: 0 auto; /* Центрирование контейнера */
+    }
+
+    /* Стиль для содержимого */
+    .content {
+        display: flex; /* Размещение элементов в ряд */
+        align-items: center; /* Выравнивание по вертикали */ 
+        justify-content: space-between; /* Размещение элементов по краям */
+    }
+
+    /* Стиль для контейнера аватара и информации */
+    .avatar-info {
+        display: flex; /* Размещение элементов в ряд */
+        align-items: center; /* Выравнивание по вертикали */
+        margin-right: 30px; /* Отступ справа */ /* Добавлено для разделения аватара и кнопки */
+       
+    }
+
+    /* Стиль для аватара */
+    .avatar {
+        width: 150px; /* Ширина аватара */
+        height: 150px; /* Высота аватара */
+        border-radius: 50%; /* Круглая форма */
+        margin-right: 20px; /* Отступ справа */
+        background: url(/businessman-working-virtual-screen_53876-104333.avif);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    /* Стиль для информации */
+    .info {
+        /* Стиль для информации */
+    }
+
+    /* Стиль для имени */
+    .name {
+        font-weight: bold; /* Жирный шрифт */
+        font-size: 24px; /* Размер шрифта */
+        margin-bottom: 10px; /* Нижний отступ */
+    }
+
+    /* Стиль для описания */
+    .description {
+        font-size: 16px; /* Размер шрифта */
+        line-height: 1.5; /* Межстрочный интервал */
+    }
+
+    /* Стиль для кнопки "Связаться" */
+    .contact-button {
+        background-color: #4CAF50; /* Зеленый цвет */
+        color: white; /* Белый текст */
+        padding: 10px 20px; /* Отступы */
+        border: none; /* Убрать границу */
+        border-radius: 5px; /* Закругленные углы */
+        cursor: pointer; /* Указать курсор указателя */
+    }
+    .experience {
+        background-color: black; /* Черный фон */
+        padding: 50px; /* Отступы по всем сторонам */
+        color: white; /* Белый цвет текста */
+    }
+
+    /* Стиль для контейнера */
+    .container {
+        max-width: 1200px; /* Максимальная ширина контейнера */
+        margin: 0 auto; /* Центрирование контейнера */
+    }
+
+    /* Стиль для roadmap */
+    .roadmap {
+        margin-top: 30px; /* Отступ сверху */
+    }
+
+    /* Стиль для списка нейросетей */
+    .roadmap ul {
+        list-style: none; /* Убрать маркеры списка */
+        padding: 0; /* Убрать отступы списка */
+       
+    }
+
+    /* Стиль для элементов списка */
+    .roadmap li {
+        margin-bottom: 20px; /* Отступ снизу */
+        flex: 1 0 25%; /* Ширина элемента в 25% */
+        min-width: 200px; /* Минимальная ширина элемента */
+        display: flex; /* Размещение элементов в ряд */
+        align-items: center; /* Выравнивание по вертикали */
+    }
+
+    /* Стиль для контейнера иконки и информации */
+    .item {
+        display: flex; /* Размещение элементов в ряд */
+        align-items: center; /* Выравнивание по вертикали */
+    }
+
+    /* Стиль для иконки */
+    .icon {
+        margin-right: 20px; /* Отступ справа от иконки */
+        width: 50px; /* Ширина иконки */
+        height: 50px; /* Высота иконки */
+    }
+
+    /* Стиль для иконки */
+    .icon img {
+        width: 100%; /* Ширина изображения */
+        height: 100%; /* Высота изображения */
+    }
+
+    /* Стиль для информации */
+    .info {
+        /* Стиль для информации */
+    }
+
+    /* Стиль для заголовка нейросети */
+    .title {
+        font-weight: bold; /* Жирный шрифт */
+        margin-bottom: 10px; /* Отступ снизу */
+        color: white; /* Белый текст */
+    }
+
+    /* Стиль для описания опыта */
+    .description {
+        font-size: 14px; /* Размер шрифта */
+        color: #4CAF50; /* Зеленый текст */
+    }
+
+    /* Стиль для вертикальной зеленой полоски */
+    .divider {
+        width: 2px; /* Ширина полоски */
+        height: 15px; /* Высота полоски */
+        background-color: #4CAF50; /* Зеленый цвет */
+        margin: 0 20px; /* Отступ слева и справа */
+    }
+    .portfolio {
+            padding: 50px;
+            text-align: center;
+            background-color: black;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            width: 80vw;
+            
+        }
+
+        .item2 {
+            width: 20%; /* Ширина элемента в 25% с отступом */
+            margin-bottom: 20px; /* Отступ снизу */
+            display: flex;
+            justify-content: center;
+            align-items:center ;
+            flex-direction: column;
+        }
+        .item3 {
+            width: 20%; /* Ширина элемента в 25% с отступом */
+            margin-bottom: 20px; /* Отступ снизу */
+            display: flex;
+            justify-content: center;
+            align-items:center ;
+            flex-direction: column;
+        }
+
+        .im,
+        .item video {
+            width: 150px; /* Ширина изображения/видео */
+            height: 150px; /* Высота изображения/видео */
+            border-radius: 10px; /* Закругленные углы */
+        }
+
+        .item p {
+            margin-top: 10px;
+            font-size: 12px; /* Размер шрифта */
+        }
+        .t{
+            color: aliceblue;
+            text-align: start;
+        }
+        .t2{
+            color: aliceblue;
+        }
+        .contacts {
+            padding: 50px;
+            text-align: center;
+            background-color: black;
+            color: aliceblue;
+        }
+
+        .line {
+            width: 70%; /* Ширина линии 70% экрана */
+            height: 2px; /* Толщина линии */
+            background-color: #4CAF50; /* Зеленый цвет */
+            margin: 30px auto; /* Отступы сверху и снизу, авто-центрирование */
+        }
+
+        .info-block {
+            display: inline-block; /* Размещение блоков рядом */
+            margin: 0 30px; /* Отступ между блоками */
+        }
+
+        .info-block h3 {
+            font-size: 18px; /* Размер шрифта */
+            margin-bottom: 10px; /* Отступ снизу */
+            color: aliceblue;
+        }
+
+        .info-block p {
+            color: #4CAF50; /* Зеленый цвет */
+            font-size: 14px; /* Размер шрифта */
+        }
+        .rr{
+            background-color: black;
+            color: white;
+            margin: 0;
+            padding-left: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Логотип" class="logo">  <!-- Замените "logo.png" на путь к вашему логотипу -->
+
+        <nav>
+            <ul>
+                <li><a href="#">Обо мне</a></li>
+                <li><a href="#">Опыт работы</a></li>
+                <li><a href="#">Портфолио</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <!-- Фон для блока, на котором будет изображение -->
+            <div class="image-container">
+                <!-- Изображение с закругленными углами -->
+                <img src="technology-human-touch-background-modern-remake-creation-adam.jpg" alt="Изображение">
+            </div>
+            <!-- Заголовок и текст поверх изображения -->
+            <div class="content_main">
+                <h1>Заголовок</h1>
+                <p>Текст, который выводится поверх изображения.</p>
+            </div>
+        </div>
+    </section>
+    <section class="about-me">
+        <div class="container">
+            <h2>Обо мне</h2> 
+            <div class="content"> 
+                <div class="avatar-info">
+                   <div class="avatar"></div>
+                    <div class="info">
+                        <h3 class="name">Ваше имя</h3> 
+                        <p class="description">
+                            Здесь напишите краткое описание себя.
+                        </p>
+                    </div>
+                </div>
+                <button class="contact-button">Связаться</button>
+            </div>
+        </div>
+    </section>
+    <section class="experience">
+        <div class="container">
+            <h2>Опыт работы</h2>  <!-- Заголовок "Опыт работы" -->
+            <div class="roadmap">
+                <h3>Опыт работы с нейросетями</h3> <!-- Подзаголовок "Опыт работы с нейросетями" -->
+                <ul>
+                    <li>
+                        <div class="item">
+                            <div class="icon">
+                                <img class="ic" src="/icons8-suitcase-50.png" alt="Чемоданчик">  <!-- Замените "suitcase.svg" на путь к вашей иконке -->
+                            </div>
+                            <div class="info">
+                                <h4 class="title">ChatGPT</h4>  <!-- Название нейросети -->
+                                <p class="description">Генерация текста</p>  <!-- Описание опыта -->
+                            </div>
+                        </div>
+                        
+                    </li>
+                    <div class="divider"></div>  <!-- Вертикальная зеленая полоска -->
+                    <li>
+                        <div class="item">
+                            <div class="icon">
+                                <img class="ic" src="/icons8-suitcase-50.png" alt="Кисть">  <!-- Замените "paint-brush.svg" на путь к вашей иконке -->
+                            </div>
+                            <div class="info">
+                                <h4 class="title">Leonardo AI</h4>  <!-- Название нейросети -->
+                                <p class="description">Создание изображений</p>  <!-- Описание опыта -->
+                            </div>
+                        </div>
+                       
+                    </li>
+                     <div class="divider"></div>  <!-- Вертикальная зеленая полоска -->
+                    <li>
+                        <div class="item">
+                            <div class="icon">
+                                <img class="ic" src="/icons8-suitcase-50.png" alt="Видеокамера">  <!-- Замените "video-camera.svg" на путь к вашей иконке -->
+                            </div>
+                            <div class="info">
+                                <h4 class="title">InVideo</h4>  <!-- Название нейросети -->
+                                <p class="description">Редактирование видео</p>  <!-- Описание опыта -->
+                            </div>
+                        </div>
+                       
+                    </li> 
+                    <div class="divider"></div>  <!-- Вертикальная зеленая полоска -->
+                    <li>
+                        <div class="item">
+                            <div class="icon">
+                                <img class="ic" src="/icons8-suitcase-50.png" alt="Микрофон">  <!-- Замените "microphone.svg" на путь к вашей иконке -->
+                            </div>
+                            <div class="info">
+                                <h4 class="title">ElevenLabs</h4>  <!-- Название нейросети -->
+                                <p class="description">Синтез речи</p>  <!-- Описание опыта -->
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio">
+        <h2 class="t">Портфолио</h2>
+        <div class="gallery">
+            <!-- Первый ряд -->
+            <div class="item2">
+                <img class="im" src="ai-chip-artificial-intelligence-future-technology-innovation_53876-129780.avif" alt="Изображение 1">
+                <p class="t2">lorem</p>
+            </div>
+            <div class="item2">
+                <img class="im" src="ai-chip-artificial-intelligence-future-technology-innovation_53876-129780.avif" alt="Изображение 2">
+                <p class="t2">lorem</p>
+            </div>
+            <div class="item2">
+                <img class="im" src="ai-chip-artificial-intelligence-future-technology-innovation_53876-129780.avif" alt="Изображение 3">
+                <p class="t2">lorem</p>
+            </div>
+            <div class="item2">
+                <img class="im" src="ai-chip-artificial-intelligence-future-technology-innovation_53876-129780.avif" alt="Изображение 4">
+                <p class="t2">lorem</p>
+            </div>
+            <div class="item2">
+                <img class="im" src="ai-chip-artificial-intelligence-future-technology-innovation_53876-129780.avif" alt="Изображение 5">
+                <p class="t2">lorem</p>
+            </div>
+                </div>
+                <div class="gallery">
+            <!-- Второй ряд -->
+            <div class="item3">
+                <img class="im" src="ai-chip-artificial-intelligence-future-technology-innovation_53876-129780.avif" alt="Изображение 6">
+                <p class="t2">lorem</p>
+            </div>
+            <div class="item3">
+                <img class="im" src="ai-chip-artificial-intelligence-future-technology-innovation_53876-129780.avif" alt="Изображение 7">
+                <p class="t2">lorem</p>
+            </div>
+            <div class="item3">
+                <video controls width="150" height="150">
+                    <source src="video1.mp4" type="video/mp4">
+                    
+                </video>
+                <p class="t2">lorem</p>
+            </div>
+            <div class="item3">
+                <video controls width="150" height="150">
+                    <source src="video2.mp4" type="video/mp4">
+                    
+                </video>
+                <p class="t2">lorem</p>
+            </div>
+        </div>
+    </section>
+    <h2 class="rr">Контакты</h2>
+    <section class="contacts">
+        
+        <div class="line"></div>
+        <div class="info-block">
+            <h3>Телефон</h3>
+            <p>+7 (XXX) XXX-XX-XX</p>
+        </div>
+        <div class="info-block">
+            <h3>Email</h3>
+            <p>your.email@example.com</p>
+        </div>
+    </section>
+    <!-- Остальное содержимое сайта -->
+</body>
+</html>
